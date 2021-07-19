@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "id": "Xz0hZk4MT",
+      "name": "Mango",
+      "number": "123-45-67",
+      "isContactExists": false
+    },
+    {
+      "id": "rXxwdfQ6z",
+      "name": "Poly",
+      "number": "303-55-24",
+      "isContactExists": false
+    },
+    {
+      "id": "lSDH1tavWc",
+      "name": "Kiwi",
+      "number": "455-55-44",
+      "isContactExists": false
+    },
+    {
+      "id": "FyQ491fgv",
+      "name": "Ajax",
+      "number": "384-82-55",
+      "isContactExists": false
+    }
+  ]
+}
