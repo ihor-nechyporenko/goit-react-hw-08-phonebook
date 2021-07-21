@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import Container from './components/Container';
@@ -17,6 +17,8 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import ContactsPage from './pages/ContactsPage';
+import PrivateRoute from './components/UserMenu/PrivateRoute';
+import PublicRoute from './components/UserMenu/PublicRoute';
 
 import './common.css';
 // import fadeStyles from './fade/fadeFilter.module.css';
@@ -28,16 +30,27 @@ class App extends Component {
   }
 
   render() {
-    // const { contacts, isLoading, error } = this.props;
-    // const renderFilter = contacts.length > 0;
-
     return (
       <Container>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/contacts" component={ContactsPage} />
+          <PublicRoute exact path="/" component={HomePage} />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/contacts"
+            component={RegisterPage}
+          />
+          <PublicRoute
+            path="/login"
+            restricted
+            redirectTo="/contacts"
+            component={LoginPage}
+          />
+          <PrivateRoute
+            path="/contacts"
+            redirectTo="/login"
+            component={ContactsPage}
+          />
         </Switch>
 
         <CSSTransition
@@ -49,40 +62,10 @@ class App extends Component {
         >
           <Header />
         </CSSTransition>
-
-        {/* <Form />
-
-        <CSSTransition
-          in={renderFilter}
-          timeout={250}
-          classNames={fadeStyles}
-          unmountOnExit
-        >
-          <Filter />
-        </CSSTransition>
-
-        {isLoading && <Loader />}
-        {error && <Error />}
-
-        <CSSTransition
-          in={true}
-          appear
-          timeout={500}
-          classNames={fadeStyles}
-          unmountOnExit
-        >
-          <ContactList />
-        </CSSTransition> */}
       </Container>
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   contacts: selectors.getContacts(state),
-//   isLoading: selectors.getLoading(state),
-//   error: selectors.getError(state),
-// });
 
 const mapDispatchToProps = dispatch => ({
   getCurrentUser: () => dispatch(authOperations.getCurrentUser()),

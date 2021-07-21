@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AuthNav from '../AuthNav';
-import UserMenu from '../UserMenu';
+import UserMenu from '../UserMenu/UserMenu';
 import Navigation from '../Navigation';
 import { authSelectors } from '../../redux/auth';
 import styles from './Header.module.css';
