@@ -1,6 +1,7 @@
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 
 import { operations, selectors } from '../../redux/phonebook';
 import styles from './ContactList.module.css';
@@ -11,14 +12,15 @@ const ContactList = ({ contacts, onDeleteContact }) => (
       <CSSTransition key={id} timeout={250} classNames={styles}>
         <li className={styles.item}>
           <p className={styles.name}>{name}:</p>
-          <p>{number}</p>
-          <button
-            type="button"
-            className={styles.button}
+          <p className={styles.name}>{number}</p>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
             onClick={() => onDeleteContact(id)}
           >
             Delete
-          </button>
+          </Button>
         </li>
       </CSSTransition>
     ))}

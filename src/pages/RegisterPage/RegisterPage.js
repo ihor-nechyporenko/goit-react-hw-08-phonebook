@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+
 import { authOperations } from '../../redux/auth';
+import Container from '../../components/Container';
+import styles from '../LoginPage/LoginPage.module.css';
 
 class RegisterPage extends Component {
   state = {
@@ -33,52 +37,56 @@ class RegisterPage extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <>
-        <h1>Register Page</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              required
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
+      <Container>
+        <div className={styles.thumb}>
+          <h2 className={styles.title}>Registration</h2>
+          <form onSubmit={this.handleSubmit}>
+            <label className={styles.label}>
+              Name
+              <input
+                className={styles.input}
+                type="text"
+                name="name"
+                required
+                value={name}
+                onChange={this.handleChange}
+              />
+            </label>
 
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              required
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
+            <label className={styles.label}>
+              Email
+              <input
+                className={styles.input}
+                type="email"
+                name="email"
+                required
+                value={email}
+                onChange={this.handleChange}
+              />
+            </label>
 
-          <label>
-            Password
-            <input
-              type="text"
-              name="password"
-              required
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button type="submit">Sign in</button>
-        </form>
-      </>
+            <label className={styles.label}>
+              Password
+              <input
+                className={styles.input}
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={this.handleChange}
+              />
+            </label>
+            <div className={styles.button__container}>
+              <Button type="submit" variant="contained" color="primary">
+                Sign in
+              </Button>
+            </div>
+          </form>
+        </div>
+      </Container>
     );
   }
 }
-
-// const mapDispatchToProps = dispatch => ({
-//     onRegister: data => dispatch(authOperations.register(data)),
-// });
 
 const mapDispatchToProps = {
   onRegister: authOperations.register,

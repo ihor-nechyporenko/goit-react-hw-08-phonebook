@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
+import Container from '../../components/Container';
 import Form from '../../components/Form';
 import Filter from '../../components/Filter';
 import ContactList from '../../components/ContactList';
@@ -20,9 +21,7 @@ class ContactsPage extends Component {
     const renderFilter = contacts.length > 0;
 
     return (
-      <>
-        <h1>Contacts Page</h1>
-
+      <Container>
         <Form />
 
         <CSSTransition
@@ -46,7 +45,7 @@ class ContactsPage extends Component {
         >
           <ContactList />
         </CSSTransition>
-      </>
+      </Container>
     );
   }
 }

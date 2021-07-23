@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+
 import { authOperations } from '../../redux/auth';
+import Container from '../../components/Container';
+import styles from './LoginPage.module.css';
 
 class LoginPage extends Component {
   state = {
@@ -31,36 +35,44 @@ class LoginPage extends Component {
     const { email, password } = this.state;
 
     return (
-      <>
-        <h1>Login Page</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            E-mail
-            <input
-              type="email"
-              name="email"
-              required
-              autoComplete="off"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
+      <Container>
+        <div className={styles.thumb}>
+          <h2 className={styles.title}>Login</h2>
+          <form onSubmit={this.handleSubmit}>
+            <label className={styles.label}>
+              E-mail
+              <input
+                className={styles.input}
+                type="email"
+                name="email"
+                required
+                autoComplete="off"
+                value={email}
+                onChange={this.handleChange}
+              />
+            </label>
 
-          <label>
-            Password
-            <input
-              type="text"
-              name="password"
-              required
-              autoComplete="off"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
+            <label className={styles.label}>
+              Password
+              <input
+                className={styles.input}
+                type="password"
+                name="password"
+                required
+                autoComplete="off"
+                value={password}
+                onChange={this.handleChange}
+              />
+            </label>
 
-          <button type="submit">Login</button>
-        </form>
-      </>
+            <div className={styles.button__container}>
+              <Button type="submit" variant="contained" color="primary">
+                Login
+              </Button>
+            </div>
+          </form>
+        </div>
+      </Container>
     );
   }
 }

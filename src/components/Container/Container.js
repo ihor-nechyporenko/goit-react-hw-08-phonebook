@@ -1,7 +1,11 @@
 import styles from './Container.module.css';
 
 const Container = ({ children }) => (
-  <div className={styles.container}>{children}</div>
+  <section>
+    <div className={styles.layout}>
+      <div className={styles.container}>{children}</div>
+    </div>
+  </section>
 );
 
 export default Container;

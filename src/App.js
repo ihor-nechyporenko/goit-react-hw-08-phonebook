@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
-import Container from './components/Container';
+// import Container from './components/Container';
 import Header from './components/Header';
 import Loader from './components/Loader';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
@@ -33,7 +33,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <>
         <CSSTransition
           in={true}
           appear
@@ -66,7 +66,7 @@ class App extends Component {
             />
           </Switch>
         </Suspense>
-      </Container>
+      </>
     );
   }
 }

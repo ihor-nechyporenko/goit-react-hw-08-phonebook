@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import shortid from 'shortid';
+import Button from '@material-ui/core/Button';
 
 import Notification from '../Notification';
 import { operations, selectors } from '../../redux/phonebook';
@@ -61,7 +62,7 @@ class Form extends Component {
     const { name, number, isContactExists } = this.state;
 
     return (
-      <>
+      <div className={styles.thumb}>
         <form onSubmit={this.handleSubmit}>
           <div className={styles.form__container}>
             <label className={styles.label}>
@@ -93,9 +94,11 @@ class Form extends Component {
             </label>
           </div>
 
-          <button type="submit" className={styles.button}>
-            Add contact
-          </button>
+          <div className={styles.button__container}>
+            <Button type="submit" variant="contained" color="primary">
+              Add contact
+            </Button>
+          </div>
         </form>
 
         <CSSTransition
@@ -106,7 +109,7 @@ class Form extends Component {
         >
           <Notification name={name} />
         </CSSTransition>
-      </>
+      </div>
     );
   }
 }
