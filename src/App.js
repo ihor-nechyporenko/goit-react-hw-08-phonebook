@@ -1,9 +1,7 @@
 import { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 
-// import Container from './components/Container';
 import Header from './components/Header';
 import Loader from './components/Loader';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
@@ -11,7 +9,6 @@ import PublicRoute from './components/UserMenu/PublicRoute';
 import { authOperations } from './redux/auth';
 
 import './common.css';
-import fadeHeaderStyles from './fade/fadeHeader.module.css';
 
 const HomePage = lazy(() =>
   import('./pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -34,15 +31,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <CSSTransition
-          in={true}
-          appear
-          timeout={500}
-          classNames={fadeHeaderStyles}
-          unmountOnExit
-        >
-          <Header />
-        </CSSTransition>
+        <Header />
 
         <Suspense fallback={<Loader />}>
           <Switch>

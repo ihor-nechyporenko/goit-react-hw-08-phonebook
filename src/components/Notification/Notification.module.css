@@ -1,6 +1,6 @@
 .thumb {
   position: absolute;
-  top: 15px;
+  top: 120px;
   right: 15px;
   width: 50%;
 
@@ -10,7 +10,13 @@
 }
 
 .message {
-  padding: 10px;
+  padding: 25px;
   text-align: center;
   color: #fff;
+}
+
+@media screen and (min-width: 1200px) {
+  .message {
+    font-size: 22px;
+  }
 }
